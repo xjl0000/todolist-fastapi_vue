@@ -1,0 +1,44 @@
+# -------------------
+# 后端忽略文件
+# -------------------
+backend/__pycache__/
+backend/venv/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.Python
+backend/env/
+backend/build/
+backend/develop-eggs/
+backend/dist/
+backend/downloads/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/test.db  # SQLite数据库文件不上传，我们用Docker挂载
+
+# -------------------
+# 前端忽略文件
+# -------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.vscode/
+
+# -------------------
+# 其他通用忽略
+# -------------------
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+data/  # Docker挂载的数据库文件夹不上传
