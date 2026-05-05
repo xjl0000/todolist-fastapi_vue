@@ -6,8 +6,11 @@ const api = axios.create({
   timeout: 5000
 })
 
-// 获取所有待办
-export const getTodos = () => api.get('/todos')
+// 获取指定日期的待办（默认今天）
+export const getTodos = (date) => api.get('/todos', { params: { date } })
+
+// 获取所有日期的完成状态
+export const getDates = () => api.get('/dates')
 
 // 新增待办
 export const addTodo = (data) => api.post('/todos', data)
