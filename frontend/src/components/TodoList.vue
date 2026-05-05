@@ -110,7 +110,22 @@ const fetchTodos = async () => {
     todos.value = res.data
   } catch (err) {
     console.error('获取待办失败：', err)
-    alert('请检查后端服务是否在 http://localhost:8000 运行')
+    if (err.response) {
+      // 服务器返回了错误状态码
+      if (err.response.status === 404) {
+        alert('后端服务接口不存在，请检查服务配置')
+      } else if (err.response.status >= 500) {
+        alert('后端服务内部错误，请稍后重试')
+      } else {
+        alert('网络请求失败，请检查网络连接')
+      }
+    } else if (err.request) {
+      // 请求已发出但没有收到响应
+      alert('无法连接到后端服务，请检查服务是否正常运行')
+    } else {
+      // 其他错误
+      alert('发生未知错误，请刷新页面重试')
+    }
   }
 }
 
