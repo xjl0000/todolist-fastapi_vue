@@ -15,10 +15,10 @@ Base.metadata.create_all(bind=engine)
 # 创建 FastAPI 应用实例
 app = FastAPI(title="Todo List API", version="1.0")
 
-# 配置 CORS 跨域（允许前端 http://localhost:5173 访问）
+# 配置 CORS 跨域（允许所有来源访问）
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # 前端开发地址
+    allow_origins=["*"],  # 允许所有来源访问（生产环境可限制具体域名）
     allow_credentials=True,
     allow_methods=["*"],  # 允许所有 HTTP 方法
     allow_headers=["*"],  # 允许所有请求头
